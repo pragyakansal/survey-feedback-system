@@ -1,0 +1,44 @@
+<nav-bar></nav-bar>
+<div class="container">
+    <h1>Survey Results</h1>
+    <hr>
+
+    <div>
+        <form [formGroup]="surveyForm">
+            <div>
+                <div>
+                    <select class="form-select" formControlName="surveyId" id="surveyId" aria-label="Floating label select example" (change)="onSurveyChange()">
+                        <option value="-1">Select</option>
+                        <option *ngFor="let survey of surveys" [value]="survey.id">{{survey.surveyName}}</option>
+                    </select>
+                    <label for="surveyId">Survey</label>
+                </div>
+            </div>
+            
+            <div>
+                <label for="">Survey Link <a href={{surveyLink}} target="_blank">{{surveyLink}}</a></label>
+            </div>
+
+
+
+        </form>
+
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th *ngFor="let question of filteredQuestions">{{question.text}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of results">
+                    <td>{{result.name}}</td>
+                    <td>{{result.email}}</td>
+                    <td *ngFor="let questionId of currentQuestionIds">{{result[questionId]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

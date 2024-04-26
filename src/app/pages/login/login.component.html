@@ -1,0 +1,30 @@
+<section>
+    <div>
+        <div>
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2/webp" >
+        </div>
+        <div>
+            <div>
+                {{errorMessage}}
+            </div>
+        </div>
+        <form [formGroup]="loginForm">
+            <div>
+                <input type="email" placeholder="Enter a valid email address" formControlName="email" />
+                <label>Email Address</label>
+            </div>
+
+            <div>
+                <input type="password" placeholder="Enter password" formControlName="password" />
+                <label>Password</label>
+            </div>
+            <div>
+                <button type="button" (click)="onSubmit()" [disabled]="this.loginForm.invalid">
+                    Login
+                </button>
+            </div>
+
+
+        </form>
+    </div>
+</section>

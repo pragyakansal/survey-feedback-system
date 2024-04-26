@@ -1,0 +1,60 @@
+<div>
+    <form [formGroup]="surveyForm">
+    <h1>{{surveyName}}</h1>
+    <hr>
+    <div>
+        <div>
+            <input type="text" id="name" placeholder="Name" formControlName="name">
+            <label for="name">Full Name</label>
+        </div>
+        <div>
+            <input type="email" id="email" placeholder="name@example.com" formControlName="email">
+            <label for="email">Email Address</label>
+        </div>
+    </div>
+
+    <div *ngFor="let question of questions">
+        <h3>{{question.text}}</h3>
+
+        <div>
+            <p>Not at all likely</p>
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio1' + question.id" autocomplete="off" [value]="1" formControlName="question{{question.id}}">
+            <label for="btnradio1{{question.id}}">1</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio2' + question.id" autocomplete="off" [value]="2" formControlName="question{{question.id}}">
+            <label for="btnradio2{{question.id}}">2</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio3' + question.id" autocomplete="off" [value]="3" formControlName="question{{question.id}}">
+            <label for="btnradio3{{question.id}}">3</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio4' + question.id" autocomplete="off" [value]="4" formControlName="question{{question.id}}">
+            <label for="btnradio4{{question.id}}">4</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio5' + question.id" autocomplete="off" [value]="5" formControlName="question{{question.id}}">
+            <label for="btnradio5{{question.id}}">5</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio6' + question.id" autocomplete="off" [value]="6" formControlName="question{{question.id}}">
+            <label for="btnradio6{{question.id}}">6</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio7' + question.id" autocomplete="off" [value]="7" formControlName="question{{question.id}}">
+            <label for="btnradio7{{question.id}}">7</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio8' + question.id" autocomplete="off" [value]="8" formControlName="question{{question.id}}">
+            <label for="btnradio8{{question.id}}">8</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio9' + question.id" autocomplete="off" [value]="9" formControlName="question{{question.id}}">
+            <label for="btnradio9{{question.id}}">9</label>
+
+            <input type="radio" [name]="'question' + question.id" [id]="'btnradio10' + question.id" autocomplete="off" [value]="10" formControlName="question{{question.id}}">
+            <label for="btnradio10{{question.id}}">10</label>
+
+            <p>Extremely Likely</p>
+
+        </div>
+        <div>
+            <button type="button" (click)="onSubmit()" [disabled]="this.surveyForm.invalid">Submit</button>
+            <button type="button" (click="this.surveyForm.reset();">Reset</button>
+        </div>
+    </div>
+    </form>
+</div>

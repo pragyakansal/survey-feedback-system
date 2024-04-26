@@ -1,0 +1,80 @@
+<nav-bar></nav-bar>
+<div>
+    <h1>Surveys</h1>
+    <hr>
+    <!-- <form [formGroup]="questionForm"> -->
+    <form>
+        <div>
+            <div>
+                <div>
+                    <select class="form-select" formControlName="surveyId" aria-label="Floating label select example" (change)="onSelect()">
+                        <option *ngFor="let survey of surveys" [value]="survey.id">{{survey.surveyName}}</option>
+                    </select>
+                    <label for="surveyId">Survey</label>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Survey</button>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <input type="text" formControlName="text" class="form-control" id="text" placeholder="Question" required>
+                    <label for="text">Question</label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" (click)="onSubmit()" [disabled]="this.questionForm.invalid"></button>
+            <button type="button" (click)="reset()">Reset</button>
+        </div>
+    </form>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Survey</th>
+                    <th scope="col">Question</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let question of filteredQuestions">
+                    <td>{{question.id}}</td>
+                    <td>{{question.surveyName}}</td>
+                    <td>{{question.text}}</td>
+                    <td>
+                        <button type="button" (click)="onEdit(question.id)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="exampleModal" tabindex="-1" aria-labeledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form [formGroup]="surveyForm">
+                        <div class="modal-header">
+                            <h1 id="exampleModalLabel">Add Survey</h1>
+                            <button type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <input type="text" class="form-control" id="surveyName" placeholder="Title" formControlName="surveyName">
+                                <label for="surveyName">Survey Title</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-bs-dismiss="modal">Close</button>
+                            <button type="button" data-bs-dismiss="modal" (click)="addSurvey()" [disabled]="this.surveyForm.invalid">Add</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
